@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TesteTecnico.Entity;
-using TesteTecnico.Service;
 
 namespace TesteTecnico.Context
 {
@@ -8,7 +7,7 @@ namespace TesteTecnico.Context
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Produto>? Produtos { get; set; }
-        public DbSet<Cliente>? Clientes { get; set; }
+        public DbSet<Produto>? Produto { get; set; }
+        public DbSet<Cliente>? Cliente { get; set; }
     }
 }

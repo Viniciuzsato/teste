@@ -14,7 +14,7 @@ namespace TesteTecnico.Repository
 
         public void Adicionar(Cliente cliente)
         {
-            _ = _appDbContext.Clientes.Add(cliente);
+            _ = _appDbContext.Cliente.Add(cliente);
             _appDbContext.SaveChanges();
         }
 
@@ -24,19 +24,21 @@ namespace TesteTecnico.Repository
             _appDbContext.SaveChanges();
         }
 
-        public void Deletar(int cliente)
+        public void Deletar(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _ = _appDbContext.Cliente.Remove(cliente);
+            _appDbContext.SaveChanges();
         }
 
         public List<Cliente> Obter()
         {
-            throw new NotImplementedException();
+            return _appDbContext.Cliente.ToList();
+
         }
 
         public Cliente ObterPorId(int clienteId)
         {
-            throw new NotImplementedException();
+            return _appDbContext.Cliente.FirstOrDefault();
         }
     }
 }

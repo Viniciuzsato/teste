@@ -1,5 +1,9 @@
 using TesteTecnico.Context;
 using Microsoft.EntityFrameworkCore;
+using TesteTecnico.Repository.Interface;
+using TesteTecnico.Repository;
+using TesteTecnico.Service.Interface;
+using TesteTecnico.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +15,16 @@ string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConne
 builder.Services.AddDbContext<AppDbContext>(options =>
                     options.UseMySql(mySqlConnection,
                     ServerVersion.AutoDetect(mySqlConnection)));
+
+
+#region Repository
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+#endregion
+
+
+#region Services
+builder.Services.AddScoped<IClienteService, ClienteService>();
+#endregion
 
 var app = builder.Build();
 
@@ -28,6 +42,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseCors();
 
 app.MapControllerRoute(
     name: "default",

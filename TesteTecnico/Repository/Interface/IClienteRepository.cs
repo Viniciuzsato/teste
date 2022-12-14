@@ -6,8 +6,8 @@ namespace TesteTecnico.Repository.Interface
     {
         void Adicionar(Cliente cliente);
         void Alterar(Cliente cliente);
-        void Deletar(int clienteId);
-        Produto ObterPorId(int clienteId);
+        void Deletar(Cliente clienteId);
+        Cliente ObterPorId(int clienteId);
         List<Cliente> Obter();
     }
 

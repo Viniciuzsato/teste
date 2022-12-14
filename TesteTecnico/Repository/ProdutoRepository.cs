@@ -1,4 +1,5 @@
-﻿using TesteTecnico.Context;
+﻿using System.Linq;
+using TesteTecnico.Context;
 using TesteTecnico.Entity;
 using TesteTecnico.Repository.Interface;
 
@@ -14,28 +15,32 @@ namespace TesteTecnico.Repository
 
         public void Adicionar(Produto produto)
         {
-            _ = _appDbContext.Produtos.Add(produto);
+            _ = _appDbContext.Produto.Add(produto);
             _appDbContext.SaveChanges();
         }
 
         public void Alterar(Produto produto)
         {
-            throw new NotImplementedException();
+            _appDbContext.Entry(produto).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _appDbContext.SaveChanges();
         }
 
-        public void Deletar(int produtoId)
+        public void Deletar(Produto produto)
         {
-            throw new NotImplementedException();
+
+            _ = _appDbContext.Produto.Remove(produto);
+            _appDbContext.SaveChanges();
         }
 
         public List<Produto> Obter()
         {
-            throw new NotImplementedException();
+            return _appDbContext.Produto.ToList();
+            
         }
 
         public Produto ObterPorId(int produtoId)
         {
-            throw new NotImplementedException();
+            return _appDbContext.Produto.FirstOrDefault();
         }
     }
 }

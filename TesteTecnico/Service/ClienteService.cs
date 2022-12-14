@@ -1,4 +1,5 @@
-﻿using TesteTecnico.Entity;
+﻿using TesteTecnico.Context;
+using TesteTecnico.Entity;
 using TesteTecnico.Repository;
 using TesteTecnico.Repository.Interface;
 using TesteTecnico.Service.Interface;
@@ -26,18 +27,19 @@ namespace TesteTecnico.Service
 
         public void Deletar(Cliente cliente)
         {
-            if (cliente is not null)
-                _clienteRepository.Deletar(cliente);
+             _clienteRepository.Deletar(cliente);
         }
 
-        public List<Produto> Obter()
+        public List<Cliente> Obter()
         {
-            throw new NotImplementedException();
+            var cliente = _clienteRepository.Obter();
+            return cliente;
         }
 
-        public Produto ObterPorId(int clienteId)
+        public Cliente ObterPorId(int clienteId)
         {
-            throw new NotImplementedException();
+            var cliente = _clienteRepository.ObterPorId(clienteId);
+            return cliente;
         }
     }
 }

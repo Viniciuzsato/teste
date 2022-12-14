@@ -30,12 +30,14 @@ namespace TesteTecnico.Service
 
         public List<Produto> Obter()
         {
-            throw new NotImplementedException();
+            var produto = _produtoRepository.Obter();
+            return produto;
         }
 
         public Produto ObterPorId(int produtoId)
         {
-            throw new NotImplementedException();
+            var produto = _produtoRepository.ObterPorId(produtoId);
+            return produto;
         }
     }
 }

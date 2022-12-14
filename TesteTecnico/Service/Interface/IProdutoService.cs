@@ -7,7 +7,7 @@ namespace TesteTecnico.Service.Interface
         void Adicionar(Produto produto);
         void Alterar(Produto produto);
         void Deletar(Produto produto);
-        Produto ObterPorId(Produto produtoId);
+        Produto ObterPorId(int produtoId);
         List<Produto> Obter();
     }
 }
